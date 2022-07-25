@@ -1,0 +1,41 @@
+* {
+    padding: 0;
+    margin: 0;
+    color: wheat;
+}
+.sideblock {
+    padding: 10px 0px 0px 10px;
+    width: 180px;
+    height: 1000px;
+    background-color: #252530;
+    box-shadow: inset 0px 10px 10px -11px rgb(0, 0, 0);
+}
+
+.inline {
+    display: flex;
+}
+
+body {
+    background-color: #15141a;
+}
+
+.auth_com {
+    float: right;
+    margin-right: 10px;
+}
+
+header {
+    display: inherit;
+    background-color: #19181e;
+    height: 50px;
+}
+header h1{
+    margin-left: 20px;
+    font-family: 'Kanit', sans-serif;
+    float: left;
+}
+.logo {
+    margin-left: 20px;
+    width: 130px;
+    float: left;
+}
