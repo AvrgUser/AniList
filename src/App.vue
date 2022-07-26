@@ -4,19 +4,28 @@
   <H1>AniList</H1>
   <Auth class="auth_com"></Auth>
 </header>
-  <div class="grid">
-    <aside class="sideblock">
-    </aside>
-    hello
-  </div>
+<main class="main">
+  <aside class="sideblock">
+      <section><Nav></Nav></section>
+  </aside>
+
+  <MainContent class="MainContent"></MainContent>
+  
+</main>
 </template>
 
 <script lang="ts">
+
 import { Options, Vue } from "vue-class-component";
 import Auth from "./page/Auth.vue";
+import Nav from "./searchfilters/Nav.vue";
+import MainContent from "./main-content/MainContent.vue"
+
 @Options({
   components: {
-    Auth
+    Auth,
+    Nav,
+    MainContent
   },
 })
 

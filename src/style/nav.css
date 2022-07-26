@@ -1,0 +1,31 @@
+.filter button{
+    background-color: rgb(43, 43, 43);
+    border-width: 4px;
+    border-radius: 9px;
+    border-color: rgb(177, 177, 177);
+    width: 80px;
+    height: 40px;
+    position: relative;
+    transform: translate(0, 10%);
+    border-style: solid;
+  } 
+  .filter button:hover{
+    background-color: rgb(40, 40, 40);
+    border-color: rgb(105, 95, 69);
+  }
+  .filter button:active{
+    transform: matrix(0.9, 0.9);
+    border-color: rgb(177, 177, 177);
+    width: 75px;
+    height: 35px;
+  }
+  .filter div{
+    background-color: #19181e;
+    width: 150px;
+    height: 30px;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  span{
+    vertical-align: sub
+  }

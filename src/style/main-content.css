@@ -1,0 +1,14 @@
+.content {
+    height: 100%;
+    background-color: rgb(48, 48, 51);
+    position: relative;
+    margin-left: 200px;
+    margin-right: 10px;
+}
+
+.content *{
+    min-height: 100px;
+    min-width: 100px;
+    border-width: 2px;
+    border-radius: 3px;
+}

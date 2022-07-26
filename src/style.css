@@ -2,16 +2,22 @@
     padding: 0;
     margin: 0;
     color: wheat;
-}
+    }
 .sideblock {
-    padding: 10px 0px 0px 10px;
+    padding: 40px 0px 0px 0px;
     width: 180px;
-    height: 1000px;
+    min-height: 100%;
+    position: fixed;
     background-color: #252530;
     box-shadow: inset 0px 10px 10px -11px rgb(0, 0, 0);
+    text-align: -webkit-center;
 }
 
-.inline {
+.main {
+    position: relative;
+}
+
+.inline{
     display: flex;
 }
 
@@ -38,4 +44,18 @@ header h1{
     margin-left: 20px;
     width: 130px;
     float: left;
+}
+::-webkit-scrollbar {
+    background-color: rgb(105, 95, 69);
+    width: 10px;
+    border-radius: 15px;
+    padding-top: 20px;
+}
+::-webkit-scrollbar-thumb {
+    border: 1px solid rgb(177, 177, 177);
+    border-radius: 15px;
+}
+
+.MainContent{
+    height: 100%;
 }
