@@ -10,7 +10,7 @@
     position: fixed;
     background-color: #252530;
     box-shadow: inset 0px 10px 10px -11px rgb(0, 0, 0);
-    text-align: -webkit-center;
+    display: inline-block;
 }
 
 .main {
@@ -59,3 +59,10 @@ header h1{
 .MainContent{
     height: 100%;
 }
+.button-wrapper {
+    width: 80px;
+    height: 40px;
+    margin-left: 10px;
+    transform: translate(0, 20%);
+    position: relative;
+  }

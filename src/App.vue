@@ -18,7 +18,7 @@
 
 import { Options, Vue } from "vue-class-component";
 import Auth from "./page/Auth.vue";
-import Nav from "./searchfilters/Nav.vue";
+import Nav from "./searchfilters/nav.vue";
 import MainContent from "./main-content/MainContent.vue"
 
 @Options({

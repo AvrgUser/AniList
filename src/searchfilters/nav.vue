@@ -1,14 +1,13 @@
 <template>
   <div class="filter">
-    <div class="filter-genre"><span>Выберите жанр</span></div>
-    <div class="filter-season"><span>Кол-во сезонов</span></div>
-    <div class="filter-year"><span>Выберите год</span></div>
-    <div class="filter-type"><span>Выберите типТип</span></div>
-    <div class="filter-country"><span>Выберите Страну</span></div>
-
-    <button>Найти</button>
-
+    <div class="filter-element"><span> жанр</span></div>
+    <div class="filter-element"><span>Кол-во сезонов</span></div>
+    <div class="filter-element"><span> год</span></div>
+    <div class="filter-element"><span> типТип</span></div>
+    <div class="filter-element"><span> Страну</span></div><br>
+    <div class="button-wrapper-search"><button>Найти</button></div>
   </div>  
+  
 </template>
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";

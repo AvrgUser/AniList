@@ -1,19 +1,18 @@
 <template>
-  <div class="content">
-    <Anime></Anime>
+  <div class="content-element">
+    <div>1</div>
+
   </div>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import Anime from "../content-element/Anime.vue";
 
 @Options({
   components: {
-    Anime
   },
 })
-export default class MainContent extends Vue {}
+export default class Anime extends Vue {}
 </script>
 
 <style src="../style/main-content.css"></style>

@@ -2,7 +2,7 @@
     height: 100%;
     background-color: rgb(48, 48, 51);
     position: relative;
-    margin-left: 200px;
+    margin-left: 190px;
     margin-right: 10px;
 }
 
@@ -11,4 +11,9 @@
     min-width: 100px;
     border-width: 2px;
     border-radius: 3px;
+}
+
+.content-element {
+    margin: 20px 20px 20px 20px;
+    background-color:aliceblue;
 }
