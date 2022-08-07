@@ -1,7 +1,7 @@
 <template>
 <header>
   <img src="./icon.png" class="logo">
-  <H1>AniList</H1>
+  <H1>{{title}}</H1>
   <Auth class="auth_com"></Auth>
 </header>
 <main class="main">
@@ -29,7 +29,13 @@ import MainContent from "./main-content/MainContent.vue"
   },
 })
 
-export default class App extends Vue {}
+export default class App extends Vue {
+  data(){
+    return{
+      title:'AniList'
+    }
+  }
+}
 </script>
 
 <style src="./style.css"></style>
