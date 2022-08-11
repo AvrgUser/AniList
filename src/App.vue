@@ -1,31 +1,23 @@
 <template>
-<header>
-  <img src="./icon.png" class="logo">
-  <H1>{{title}}</H1>
-  <Auth class="auth_com"></Auth>
-</header>
-<main class="main">
-  <aside class="sideblock">
-      <section><Nav></Nav></section>
-  </aside>
+  <header>
+    <div class="log_d" v-on:click="redirMain">
+      <img src="./icon.png" alt="" width="120px">
+      <h1 >AniList</h1>
+    </div>
+    <button class="sign_up" id="sign-up" v-on:click="redirSign_up">Sign up</button>
+    <button class="sign_in" id="sign-up" v-on:click="redirSign_in">Sign in</button>
+  </header>
 
-  <MainContent class="MainContent"></MainContent>
-  
-</main>
 </template>
 
 <script lang="ts">
 
 import { Options, Vue } from "vue-class-component";
-import Auth from "./page/Auth.vue";
-import Nav from "./searchfilters/nav.vue";
-import MainContent from "./main-content/MainContent.vue"
+
+console.log('ddd');
 
 @Options({
   components: {
-    Auth,
-    Nav,
-    MainContent
   },
 })
 
@@ -34,6 +26,18 @@ export default class App extends Vue {
     return{
       title:'AniList'
     }
+  }
+  redirSign_in(){
+    console.log('nigger')
+    window.location.replace(`http://${window.location.host}/auth`);
+  }
+  redirSign_up(){
+    console.log('ssss')
+    window.location.replace(`http://${window.location.host}/reg`);
+  }
+  redirMain(){
+    console.log('gggg')
+    window.location.replace(`http://${window.location.host}/`);
   }
 }
 </script>

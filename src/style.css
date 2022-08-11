@@ -1,68 +1,53 @@
-* {
+*{
     padding: 0;
     margin: 0;
     color: wheat;
-    }
-.sideblock {
-    padding: 40px 0px 0px 0px;
-    width: 180px;
-    min-height: 100%;
-    position: fixed;
-    background-color: #252530;
-    box-shadow: inset 0px 10px 10px -11px rgb(0, 0, 0);
-    display: inline-block;
-}
-
-.main {
-    position: relative;
-}
-
-.inline{
-    display: flex;
-}
-
+  }
 body {
     background-color: #15141a;
 }
-
-.auth_com {
-    float: right;
-    margin-right: 10px;
+header{
+  display: inherit;
+  background-color: #212028;
+  height: 50px;
 }
-
-header {
-    display: inherit;
-    background-color: #19181e;
-    height: 50px;
+.log_d{
+  float: left;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  cursor: pointer;
 }
-header h1{
-    margin-left: 20px;
-    font-family: 'Kanit', sans-serif;
-    float: left;
+.log_d img{
+  margin-left: 10px;
+  width: 130px;
+  float: left;
 }
-.logo {
-    margin-left: 20px;
-    width: 130px;
-    float: left;
+.log_d h1{
+  margin-left: 10px;
+  font-family: 'Kanit', sans-serif;
+  
 }
-::-webkit-scrollbar {
-    background-color: rgb(105, 95, 69);
-    width: 10px;
-    border-radius: 15px;
-    padding-top: 20px;
+.sign_in, .sign_up{
+  float: right;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  text-align: center;
+  border: 2px solid;
+  border-color: rgb(245 222 179);
+  border-radius: 4px;
+  background-color: rgb(32, 32, 32);
+  height: 35px;
+  margin-right: 10px;
+  padding: 5px;
+  
 }
-::-webkit-scrollbar-thumb {
-    border: 1px solid rgb(177, 177, 177);
-    border-radius: 15px;
+.sign_in:hover, .sign_up:hover, .sign_b:hover{
+  border-color: rgb(63, 56, 45);
+  cursor: pointer;
 }
-
-.MainContent{
-    height: 100%;
+.sign_in:active, .sign_up:active, .sign_b:active{
+  border-color: rgb(245 222 179);
 }
-.button-wrapper {
-    width: 80px;
-    height: 40px;
-    margin-left: 10px;
-    transform: translate(0, 20%);
-    position: relative;
-  }
