@@ -3,13 +3,12 @@ var express = require('express');
 var serveStatic = require('serve-static');
 //var sqldb = require('./bd.js')
 const app = express();
-const servingDir = "C:/Projects/AniList/dist";
+const servingDir = __dirname + "/dist";
 
 console.log(__dirname)
 
 app.use(serveStatic(servingDir));
-var port = process.env.PORT || 5000;
-var hostname = '127.0.0.1';
+var port = process.env.PORT || 8080;
 
 app.use('/auth', (req, res)=>{
   console.log(req.url)
@@ -17,6 +16,6 @@ app.use('/auth', (req, res)=>{
   else res.sendFile(servingDir+'/auth.html');
 })
 
-app.listen(port, hostname, (req, res) => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
 })
