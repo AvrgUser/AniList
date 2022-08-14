@@ -4,19 +4,35 @@
       <img src="./icon.png" alt="" width="120px">
       <h1 >AniList</h1>
     </div>
-    <button class="sign_up" id="sign-up" v-on:click="redirSign_up">Sign up</button>
-    <button class="sign_in" id="sign-up" v-on:click="redirSign_in">Sign in</button>
+    <accaunt></accaunt>
   </header>
 
+  <main>
+    <h1><strong>All anime</strong></h1>
+    <aside class="fulanini">
+      <anime></anime>
+    </aside>
+    <div class="useranini">
+
+    </div>
+    <div>
+      <div class="filter">
+        <strong>Filter</strong>
+      </div>
+    </div>
+  </main>
 </template>
 
 <script lang="ts">
 
 import { Options, Vue } from "vue-class-component";
-
+import Accaunt from "./Accaunt.vue";
+import Anime from "./content-element/Anime.vue";
 
 @Options({
   components: {
+    Accaunt,
+    Anime
   },
 })
 
@@ -26,15 +42,9 @@ export default class App extends Vue {
       title:'AniList'
     }
   }
-  redirSign_in(){
-    window.location.replace(`http://${window.location.host}/auth?m=signin`);
-  }
-  redirSign_up(){
-    window.location.replace(`http://${window.location.host}/auth?m=signup`);
-  }
   redirMain(){
-    window.location.replace(`http://${window.location.host}/`);
-  }
+        window.location.href = `http://${window.location.host}/`;
+    }
 }
 </script>
 

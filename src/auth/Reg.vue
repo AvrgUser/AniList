@@ -48,13 +48,13 @@ export default class Reg extends Vue {
         if(username_.value.includes(" ")) { info_.textContent = "Нельзя оставлять отспуты!"; return; }
 
         let json = JSON.stringify({
-            user: username_.value,
+            name: username_.value,
             password: password_.value
         });
 
-        xhr.open("POST", '/reg')
+        xhr.open("POST", '/reguser')
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
+        console.log(json)
         xhr.send(json);
     }
 }

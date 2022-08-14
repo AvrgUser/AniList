@@ -45,13 +45,13 @@ export default class Auth extends Vue {
     if(password_.value == "") { info_.textContent = "Введите пороль!"; return; }
 
     let json = JSON.stringify({
-      user: username_.value,
+      name: username_.value,
       password: password_.value
     });
 
-  xhr.open("POST", '/auth')
+  xhr.open("POST", '/authuser')
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
+  console.log(json)
   xhr.send(json);
 }
 }

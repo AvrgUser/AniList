@@ -22,7 +22,7 @@ class DBConnection{
     });
   }
 
-  addElement = (table, args, callback)=>{
+  addElement(table, args, callback){
     let values = '', fields = '';
     for(let i =0; i< args.length; i++){
       values+=`'`+args[i].value+`'`
@@ -35,6 +35,10 @@ class DBConnection{
     let req=`INSERT INTO `+'`'+`${table}`+'`'+` (${fields}) VALUES (${values});`
     console.log(req)
     this.connection.query(req, callback)
+  }
+
+  getElement(){
+    this.connection.
   }
 
   connection
