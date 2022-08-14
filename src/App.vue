@@ -14,7 +14,6 @@
 
 import { Options, Vue } from "vue-class-component";
 
-console.log('ddd');
 
 @Options({
   components: {

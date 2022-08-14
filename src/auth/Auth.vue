@@ -8,10 +8,11 @@
       </div>
       <div class="sign_d" id="sign-in_d">
         <h3>Sign in to AniList</h3>
-        <input type="text" placeholder="Login">
-        <input type="password" placeholder="Password">
-        <button class="sign_b">Sign in</button>
+        <input type="text" placeholder="Login" id="username">
+        <input type="password" placeholder="Password" id="password">
+        <button class="sign_b" v-on:click="login">Sign in</button>
         <a :href="signup" class="no_ak">no account?</a>
+        <strong class="info" id="info"></strong>
       </div>
   </main>
 </template>
@@ -34,6 +35,25 @@ export default class Auth extends Vue {
   redirMain(){
     window.location.replace(`http://${window.location.host}/`);
   }
+  login(){
+    let xhr = new XMLHttpRequest();
+    const username_ = document.getElementById('username');
+    const password_ = document.getElementById('password');
+    const info_ = document.getElementById('info');
+
+    if(username_.value == ""){ info_.textContent = "Введите логин!";  return; }
+    if(password_.value == "") { info_.textContent = "Введите пороль!"; return; }
+
+    let json = JSON.stringify({
+      user: username_.value,
+      password: password_.value
+    });
+
+  xhr.open("POST", '/auth')
+  xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+  xhr.send(json);
+}
 }
 </script>
 
