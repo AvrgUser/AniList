@@ -6,13 +6,16 @@
 body {
   background-color: #15141a;
 }
-.log_a_d{
+main{
   position: fixed;
-  top: 20%;
   left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
+}
+.log_a_d{
   text-align: center;
   cursor: pointer;
+  margin-bottom: 5px;
 }
 .log_a_d img{
   width: 130px;
@@ -42,12 +45,9 @@ body {
 }
 .sign_d{
   display: inline-grid;
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  transform: translate(50%,-50%);
   background-color: #212028;
   padding: 20px;
+  margin-top: 15px;
   border-radius: 10px;
   text-align: center;
 }

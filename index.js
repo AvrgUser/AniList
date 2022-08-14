@@ -1,7 +1,13 @@
 var express = require('express');
 var path = require('path');
 var serveStatic = require('serve-static');
+<<<<<<< HEAD:backend/server.js
 var sqldb = require('./bd')
+=======
+//var sqldb = require('./bd.js')
+const app = express();
+const servingDir = __dirname + "/dist";
+>>>>>>> origin/main:index.js
 
 const app = express();
 
@@ -13,7 +19,11 @@ let servingDir = path.parse(__dirname).dir+'\\dist';
 console.log(servingDir)
 
 app.use(serveStatic(servingDir));
+<<<<<<< HEAD:backend/server.js
 var port = process.env.PORT || 5000;
+=======
+var port = process.env.PORT || 8080;
+>>>>>>> origin/main:index.js
 
 app.use('/auth', (req, res)=>{
   console.log(req.url)
@@ -21,6 +31,7 @@ app.use('/auth', (req, res)=>{
   else res.sendFile(servingDir+'/auth.html');
 })
 
+<<<<<<< HEAD:backend/server.js
 app.use('/reguser', (req, res)=>{
   console.log('trying add user')
   dbcon.addElement('users', [{field: 'name', value: req.query.n},{field: 'password', value: req.query.p},{field: 'anime', value: 'empty'}], (e, res)=>{
@@ -32,4 +43,8 @@ app.use('/reguser', (req, res)=>{
 
 app.listen(port, (req, res) => {
   console.log(`Server running at http://localhost:${port}/`)
+=======
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}/`);
+>>>>>>> origin/main:index.js
 })

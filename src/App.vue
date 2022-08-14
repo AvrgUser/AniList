@@ -14,7 +14,6 @@
 
 import { Options, Vue } from "vue-class-component";
 
-console.log('ddd');
 
 @Options({
   components: {
@@ -28,15 +27,12 @@ export default class App extends Vue {
     }
   }
   redirSign_in(){
-    console.log('nigger')
-    window.location.replace(`http://${window.location.host}/auth`);
+    window.location.replace(`http://${window.location.host}/auth?m=signin`);
   }
   redirSign_up(){
-    console.log('ssss')
-    window.location.replace(`http://${window.location.host}/reg`);
+    window.location.replace(`http://${window.location.host}/auth?m=signup`);
   }
   redirMain(){
-    console.log('gggg')
     window.location.replace(`http://${window.location.host}/`);
   }
 }
