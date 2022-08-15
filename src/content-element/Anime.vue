@@ -1,7 +1,24 @@
 <template>
   <div class="content-element">
-    <div>1</div>
-
+    awds
+  </div>
+  <div class="content-element">
+    awds
+  </div>
+  <div class="content-element">
+    awds
+  </div>
+  <div class="content-element">
+    awds
+  </div>
+  <div class="content-element">
+    awds
+  </div>
+  <div class="content-element">
+    awds
+  </div>
+  <div class="content-element">
+    awds
   </div>
 </template>
 

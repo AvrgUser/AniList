@@ -9,17 +9,15 @@
 
   <main>
     <h1><strong>All anime</strong></h1>
-    <aside class="fulanini">
-      <anime></anime>
-    </aside>
-    <div class="useranini">
-
-    </div>
     <div>
-      <div class="filter">
+      <aside class="filter">
         <strong>Filter</strong>
+      </aside>
+      <div class="fulanini">
+        <anime></anime>
       </div>
     </div>
+
   </main>
 </template>
 
