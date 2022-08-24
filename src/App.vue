@@ -1,19 +1,49 @@
 <template>
   <header>
+
     <div class="log_d" v-on:click="redirMain">
       <img src="./icon.png" alt="" width="120px">
-      <h1 >AniList</h1>
+      <h1>AniList</h1>
     </div>
-    <accaunt></accaunt>
+    
+    <div class="auth_d">
+      <Accaunt v-if="isAuth"></Accaunt>
+      <Signin_Signup v-if="!isAuth"></Signin_Signup>
+    </div>
+
   </header>
+
+  <aniInfo class="aniinfo"></aniInfo>
 
   <main>
     <h1><strong>All anime</strong></h1>
-    <div>
+    <div style="margin-top: 15px;">
+
       <aside class="filter">
         <strong>Filter</strong>
       </aside>
+
       <div class="fulanini">
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+        <anime></anime>
+      </div>
+
+      <div class="userani">
         <anime></anime>
       </div>
     </div>
@@ -23,26 +53,45 @@
 
 <script lang="ts">
 
-import { Options, Vue } from "vue-class-component";
-import Accaunt from "./Accaunt.vue";
-import Anime from "./content-element/Anime.vue";
+import { Options, Vue } from "vue-class-component"
+import Accaunt from "./Accaunt.vue"
+import Anime from "./content-element/Anime.vue"
+import AniInfo from "./content-element/AniInfo.vue"
+import Signin_Signup from "./Signin-Signup.vue"
 
 @Options({
   components: {
     Accaunt,
-    Anime
+    Anime,
+    AniInfo,
+    Signin_Signup
   },
 })
 
 export default class App extends Vue {
+  isAuth = true
   data(){
     return{
-      title:'AniList'
+      title:'AniList',
     }
   }
-  redirMain(){
-        window.location.href = `http://${window.location.host}/`;
+  beforeMount(){
+    let xhr = new XMLHttpRequest();
+
+    xhr.open("GET", '/getuserinfo')
+    xhr.onloadend = ()=>{
+      if(xhr.status==200){
+        this.isAuth = !xhr.responseText.includes('user is not authorized')
+        console.log('authtorized:', this.isAuth)
+        console.log(this.isAuth)
+      }
     }
+    xhr.send()
+  }
+  
+  redirMain(){
+    window.location.href = `http://${window.location.host}/`;
+  }
 }
 </script>
 

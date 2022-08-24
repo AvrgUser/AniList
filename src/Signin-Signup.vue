@@ -1,6 +1,7 @@
 <template>
-    <strong>{{username}}</strong>
-    <button class="sign_in" id="sign-up" >Sign out</button>
+      <button class="sign_up" id="sign-up" v-on:click="redirSign_up">Sign up</button>
+      <button class="sign_in" id="sign-up" v-on:click="redirSign_in">Sign in</button>
+    
 </template>
 
 <style>

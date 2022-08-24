@@ -27,6 +27,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class Auth extends Vue {
+  
   data(){
     return{
       signup:`http://${window.location.host}/auth?m=signup`

@@ -1,6 +1,6 @@
 <template>
-  <div class="content-element">
-
+  <div class="anime_info">
+    123
   </div>
 </template>
 

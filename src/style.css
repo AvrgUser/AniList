@@ -43,19 +43,31 @@ main h1{
 }
 .filter{
   background-color: #212028;
-  position: fixed;
-  top: 50%;
-  transform: translate(0, -50%);
   width: 230px;
   height: 410px;
+  margin-right: 58px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  text-align: center;
-  display: grid;
   padding: 5px;
+  float: left;
 }
 .fulanini{
-  min-height: max-content;
-  margin-left: 300px;
-  margin-top: 10px;
+  min-width: max-content;
+  min-height: min-content;
+  display: table-row-group;
+}
+.userani{
+  min-width: max-content;
+  min-height: min-content;
+  display: none;
+
+}
+.aniinfo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  height: 440px;
+  display: none;
 }

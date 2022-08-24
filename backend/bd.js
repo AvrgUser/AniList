@@ -32,13 +32,28 @@ class DBConnection{
         fields+=', '
       }
     }
-    let req=`INSERT INTO `+'`'+`${table}`+'`'+` (${fields}) VALUES (${values});`
+    let req=`INSERT INTO ${table} (${fields}) VALUES (${values});`
     console.log(req)
     this.connection.query(req, callback)
   }
 
-  getElement(){
-    this.connection.
+  getElement(table, args, fields, callback){
+    let fieldList= '', argslist = ''
+    for(let i =0; i<fields.length;i++){
+      fieldList+=fields[i]
+      if(i+1<fields.length)fieldList+=', '
+    }
+    for(let i=0; i <args?.length;i++){
+      argslist+=args[i].field+' = '+args[i].value
+      if(i+1<args.length)argslist+=' AND '
+    }
+    let req=`SELECT ${fieldList} FROM ${table}`
+    if(args?.length>0){
+      req+=' WHERE '+argslist
+    }
+    req+=';'
+    console.log(req)
+    this.connection.query(req, callback)
   }
 
   connection
