@@ -51,6 +51,14 @@ export default class Reg extends Vue {
             name: username_.value,
             password: password_.value
         });
+        xhr.onloadend = ()=>{
+            if(xhr.status == 200){
+                if(xhr.responseText.includes('nickname used')){
+                    info_.innerText = 'Это имя занято другим пользователем'
+                }
+                else this.redirMain()
+            }
+        }
 
         xhr.open("POST", '/reguser')
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');

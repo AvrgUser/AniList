@@ -3,7 +3,7 @@
 
     <div class="log_d" v-on:click="redirMain">
       <img src="./icon.png" alt="" width="120px">
-      <h1>AniList</h1>
+      <h1>{{title}}</h1>
     </div>
     
     <div class="auth_d">
@@ -58,22 +58,28 @@ import Accaunt from "./Accaunt.vue"
 import Anime from "./content-element/Anime.vue"
 import AniInfo from "./content-element/AniInfo.vue"
 import Signin_Signup from "./Signin-Signup.vue"
-
+import { setname } from "./var"
 @Options({
   components: {
     Accaunt,
     Anime,
     AniInfo,
-    Signin_Signup
+    Signin_Signup,
+    setname
   },
 })
 
 export default class App extends Vue {
-  isAuth = true
+  isAuth = false
   data(){
     return{
-      title:'AniList',
+      title:'AniList'
     }
+  }
+  
+  
+  redirMain(){
+    window.location.href = `http://${window.location.host}/`;
   }
   beforeMount(){
     let xhr = new XMLHttpRequest();
@@ -82,15 +88,11 @@ export default class App extends Vue {
     xhr.onloadend = ()=>{
       if(xhr.status==200){
         this.isAuth = !xhr.responseText.includes('user is not authorized')
-        console.log('authtorized:', this.isAuth)
-        console.log(this.isAuth)
+        setname(JSON.parse(xhr.responseText).name);
       }
     }
     xhr.send()
-  }
-  
-  redirMain(){
-    window.location.href = `http://${window.location.host}/`;
+    
   }
 }
 </script>

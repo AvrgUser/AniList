@@ -5,12 +5,12 @@
   }
 body {
     background-color: #15141a;
+    min-width: 485px;
 }
 header{
   display: inherit;
   background-color: #212028;
   height: 50px;
-  min-width: 395px;
 }
 .auth_d{
   position: relative;
@@ -20,6 +20,7 @@ header{
 }
 .log_d{
   float: left;
+  margin-right: 10px;
   position: relative;
   top: 50%;
   transform: translate(0, -50%);
@@ -45,7 +46,8 @@ main h1{
   background-color: #212028;
   width: 230px;
   height: 410px;
-  margin-right: 58px;
+  margin-right: 10px;
+  margin-bottom: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 5px;
@@ -55,6 +57,7 @@ main h1{
   min-width: max-content;
   min-height: min-content;
   display: table-row-group;
+  text-align: center;
 }
 .userani{
   min-width: max-content;

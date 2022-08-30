@@ -6,6 +6,7 @@
         <img src="../icon.png" alt="" width="120px">
         <h1 v-on:click="redirMain">AniList</h1>
       </div>
+
       <div class="sign_d" id="sign-in_d">
         <h3>Sign in to AniList</h3>
         <input type="text" placeholder="Login" id="username">
@@ -14,6 +15,7 @@
         <a :href="signup" class="no_ak">no account?</a>
         <strong class="info" id="info"></strong>
       </div>
+
   </main>
 </template>
 
@@ -52,9 +54,15 @@ export default class Auth extends Vue {
 
   xhr.open("POST", '/authuser')
   xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-  console.log(json)
   xhr.send(json);
+
+  xhr.onload = ()=>{
+      if(xhr.responseText.includes('user authorized')){
+        window.location.href = `http://${window.location.host}/`;
+      }
+  }
 }
+
 }
 </script>
 
