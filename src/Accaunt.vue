@@ -53,5 +53,17 @@ export default class App extends Vue {
     redirSign_up(){
         window.location.href = `http://${window.location.host}/auth?m=signup`
     }
+    signOut(){
+        var xhr = new XMLHttpRequest();
+
+        let json = JSON.stringify({
+            
+        });
+
+        xhr.open('POST', '/sigout');
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.send(json);
+
+    }
 }
 </script>
