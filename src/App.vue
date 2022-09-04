@@ -12,8 +12,7 @@
     </div>
 
   </header>
-
-  <aniInfo class="aniinfo"></aniInfo>
+  <add-anime v-if="isRoot" class="add_anime"></add-anime>
 
   <main>
     <h1><strong>All anime</strong></h1>
@@ -23,29 +22,9 @@
         <strong>Filter</strong>
       </aside>
 
-      <div class="fulanini">
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
-        <anime></anime>
+      <div class="fulanini" >
       </div>
 
-      <div class="userani">
-        <anime></anime>
-      </div>
     </div>
 
   </main>
@@ -57,6 +36,7 @@ import { Options, Vue } from "vue-class-component"
 import Accaunt from "./Accaunt.vue"
 import Anime from "./content-element/Anime.vue"
 import AniInfo from "./content-element/AniInfo.vue"
+import AddAnime from "./content-element/AddAnime.vue"
 import Signin_Signup from "./Signin-Signup.vue"
 import { setname } from "./var"
 @Options({
@@ -64,6 +44,7 @@ import { setname } from "./var"
     Accaunt,
     Anime,
     AniInfo,
+    AddAnime,
     Signin_Signup,
     setname
   },
@@ -71,6 +52,7 @@ import { setname } from "./var"
 
 export default class App extends Vue {
   isAuth = false
+  isRoot = true
   data(){
     return{
       title:'AniList'

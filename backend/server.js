@@ -9,7 +9,7 @@ const jsonParser = express.json();
 
 let dbcon = new sqldb.DBConnection('194.190.152.244', '3306', 'u67_vcOJPHAotP', 's67_anilist', 'MhP5w^^oyxheMyP9v^HiF51y');
 
-let servingDir = path.parse(__dirname).dir+'\\dist';
+let servingDir = path.parse(__dirname).dir+'/dist';
 let port = process.env.PORT || 5000;
 
 console.log(servingDir)

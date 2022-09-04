@@ -65,12 +65,18 @@ main h1{
   display: none;
 
 }
-.aniinfo{
+.add_anime{
+  background-color: #19181d;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 260px;
-  height: 440px;
-  display: none;
+  min-height: min-content;
+  display: block;
+  padding: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  z-index: 1;
+  text-align: center;
 }

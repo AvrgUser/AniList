@@ -1,6 +1,6 @@
 <template>
   <div class="content-element">
-
+    <strong></strong>
   </div>
 </template>
 
@@ -11,7 +11,12 @@ import { Options, Vue } from "vue-class-component";
   components: {
   },
 })
-export default class Anime extends Vue {}
+export default class Anime extends Vue {
+  data(){
+    return{
+    }
+  }
+}
 </script>
 
 <style src="../style/main-content.css"></style>

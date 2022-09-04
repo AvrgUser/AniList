@@ -1,9 +1,11 @@
 <template>
   <div class="anime_info">
-    123
+    
   </div>
 </template>
+<style>
 
+</style>
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
 
@@ -11,6 +13,7 @@ import { Options, Vue } from "vue-class-component";
   components: {
   },
 })
+
 export default class Anime extends Vue {}
 </script>
 
