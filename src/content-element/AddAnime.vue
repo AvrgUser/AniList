@@ -124,29 +124,15 @@
   export default class Anime extends Vue {
     addAnime(){
       var xhr = new XMLHttpRequest();
+        let ids = ['file', 'name', 'soul', 'year', 'side', 'series', 'seasons', 'description']
 
-        const file = document.getElementById('file')
-        const name_ = document.getElementById('name')
-        const soul = document.getElementById('soul')
-        const year = document.getElementById('year')
-        const side = document.getElementById('side')
-        const series = document.getElementById('series')
-        const seasons = document.getElementById('seasons')
-        const description = document.getElementById('description')
+        let json = '{'
 
-        if(name_.value == ""){  return; }
-        
-
-        let json = JSON.stringify({
-            _file: file,
-            _Name: name_.value,
-            _Soul: soul,
-            _Year: year,
-            _Side: side,
-            _Series: series,
-            _Seasons: seasons,
-            _Description: description
-        });
+        for(let i = 0; i<ids.length;i++){
+          let a = document.getElementById(ids[i])
+          json += `${ids[i]}: ${a?.innerText}`
+        }
+        json+='}'
 
         xhr.open('POST', '/addAnime');
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
