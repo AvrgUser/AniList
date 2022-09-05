@@ -1,13 +1,13 @@
 <template>
     <div class="add_anime">
       <input type="file" id="file" accept="image/jpeg,image/png,image/jpg" class="custom-file-input">
-      <input type="text" id="Name" placeholder="Name" class="i">
-      <input type="text" id="Soul" placeholder="Soul" class="i">
-      <input type="date" id="Year" placeholder="Year" class="i">
-      <input type="text" id="Side" placeholder="Side" class="i">
-      <input type="number" id="Series" placeholder="Series" class="i">
-      <input type="number" id="Seasons" placeholder="Seasons" class="i">
-      <textarea id="Description" cols="30" rows="10"></textarea>
+      <input type="text" id="name" placeholder="Name" class="i">
+      <input type="text" id="soul" placeholder="Soul" class="i">
+      <input type="date" id="year" placeholder="Year" class="i">
+      <input type="text" id="side" placeholder="Side" class="i">
+      <input type="number" id="series" placeholder="Series" class="i">
+      <input type="number" id="seasons" placeholder="Seasons" class="i">
+      <textarea id="description" cols="30" rows="10"></textarea>
       <button class="add" @click="addAnime">Add</button>
     </div>
   </template>
@@ -123,26 +123,29 @@
   
   export default class Anime extends Vue {
     addAnime(){
-        let file = document.getElementById('file')
-        let Name = document.getElementById('Name')
-        let Soul = document.getElementById('Soul')
-        let Year = document.getElementById('Year')
-        let Side = document.getElementById('Side')
-        let Series = document.getElementById('Series')
-        let Seasons = document.getElementById('Seasons')
-        let Description = document.getElementById('Description')
+      var xhr = new XMLHttpRequest();
 
-        var xhr = new XMLHttpRequest();
+        const file = document.getElementById('file')
+        const name_ = document.getElementById('name')
+        const soul = document.getElementById('soul')
+        const year = document.getElementById('year')
+        const side = document.getElementById('side')
+        const series = document.getElementById('series')
+        const seasons = document.getElementById('seasons')
+        const description = document.getElementById('description')
+
+        if(name_.value == ""){  return; }
+        
 
         let json = JSON.stringify({
             _file: file,
-            _Name: Name,
-            _Soul: Soul,
-            _Year: Year,
-            _Side: Side,
-            _Series: Series,
-            _Seasons: Seasons,
-            _Description: Description
+            _Name: name_.value,
+            _Soul: soul,
+            _Year: year,
+            _Side: side,
+            _Series: series,
+            _Seasons: seasons,
+            _Description: description
         });
 
         xhr.open('POST', '/addAnime');
