@@ -56,14 +56,8 @@ export default class App extends Vue {
     signOut(){
         var xhr = new XMLHttpRequest();
 
-        let json = JSON.stringify({
-            
-        });
-
-        xhr.open('POST', '/sigout');
+        xhr.open('POST', '/signout');
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-        xhr.send(json);
-
     }
 }
 </script>

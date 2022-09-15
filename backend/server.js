@@ -7,7 +7,7 @@ const { nextTick } = require('process')
 const app = express();
 const jsonParser = express.json();
 
-let dbcon = new sqldb.DBConnection('194.190.152.244', '3306', 'u67_vcOJPHAotP', 's67_anilist', 'MhP5w^^oyxheMyP9v^HiF51y');
+let dbcon = new sqldb.DBConnection('164.132.6.35', '3306', 'u67_Q5fQrUb01b', 's67_anilist', '9A+J=o^u8b=lhvi1Z7NuIa2J');
 
 let servingDir = path.parse(__dirname).dir+'/dist';
 let port = process.env.PORT || 5000;
@@ -69,14 +69,14 @@ app.post('/authuser', jsonParser, (req, res)=>{
   console.log('trying auth user')
   dbcon.getElement('users', [{field: 'name', value: '"'+req.body.name+'"'}, {field: 'password', value: '"'+req.body.password+'"'}],
   ['*'],
-  (err, res)=>{
+  (err, result)=>{
       if(err){
         console.log(err)
       }
-      if(res.length==1){
+      if(result.length==1){
         console.log('user authtorized 61')
-        res.cookie('uid', res[0].id, {httpOnly: true, signed: true, maxAge: 60*60*24*365*2})
-        console.log(res[0].id)
+        res.cookie('uid', result[0].id, {httpOnly: true, signed: true, maxAge: 60*60*24*365*2})
+        console.log(result[0].id)
         console.log(req.signedCookies["uid"])
         res.end('user authorized')
       }
