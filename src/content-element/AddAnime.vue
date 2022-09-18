@@ -2,12 +2,17 @@
     <div class="add_anime">
       <input type="file" id="file" accept="image/jpeg,image/png,image/jpg" class="custom-file-input">
       <input type="text" id="name" placeholder="Name" class="i">
-      <input type="text" id="soul" placeholder="Soul" class="i">
+      <input type="text" id="genre" placeholder="Genre" class="i">
       <input type="date" id="year" placeholder="Year" class="i">
-      <input type="text" id="side" placeholder="Side" class="i">
+      <select id="country" class="i">
+        <option>Japanese</option>
+        <option>USA</option>
+        <option>China</option>
+      </select>
       <input type="number" id="series" placeholder="Series" class="i">
       <input type="number" id="seasons" placeholder="Seasons" class="i">
       <textarea id="description" cols="30" rows="10"></textarea>
+      <strong id="text_reg"></strong>
       <button class="add" @click="addAnime">Add</button>
     </div>
   </template>
@@ -115,7 +120,7 @@
   </style>
   <script lang="ts">
   import { Options, Vue } from "vue-class-component";
-  
+  import { setVariable } from "@/storage";
   @Options({
     components: {
     },
@@ -124,6 +129,27 @@
   export default class Anime extends Vue {
     addAnime(){
       var xhr = new XMLHttpRequest();
+
+        const _file = document.getElementById('file');
+        const _name = document.getElementById('name');
+        const _genre = document.getElementById('genre');
+        const _year = document.getElementById('year');
+        const _country = document.getElementById('country');
+        const _series = document.getElementById('series');
+        const _seasons = document.getElementById('seasons');
+        const _description = document.getElementById('description');
+
+        const _text_reg = document.getElementById('text_reg');
+
+        if(_file!.innerText == ""){ _text_reg!.textContent = "add an image!";  return; }
+        if(_name!.innerText == ""){ _text_reg!.textContent = "enter a name";  return; }
+        if(_genre!.innerText == ""){ _text_reg!.textContent = "enter a genre";  return; }
+        if(_year!.innerText == ""){ _text_reg!.textContent = "choose the year of release";  return; }
+        if(_country!.innerText == ""){ _text_reg!.textContent = "choose a country";  return; }
+        if(_series!.innerText == ""){ _text_reg!.textContent = "choose the number of series";  return; }
+        if(_seasons!.innerText == ""){ _text_reg!.textContent = "choose the number of seasons";  return; }
+        if(_description!.innerText == ""){ _text_reg!.textContent = "choose a description";  return; }
+
         let ids = ['file', 'name', 'soul', 'year', 'side', 'series', 'seasons', 'description']
 
         let json = '{'
@@ -137,7 +163,7 @@
         xhr.open('POST', '/addAnime');
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
         xhr.send(json);
-
+        setVariable('visible', false)
     }
   }
   </script>

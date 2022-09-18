@@ -59,12 +59,6 @@ main h1{
   display: table-row-group;
   text-align: center;
 }
-.userani{
-  min-width: max-content;
-  min-height: min-content;
-  display: none;
-
-}
 .add_anime{
   background-color: #19181d;
   position: absolute;

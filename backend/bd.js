@@ -56,6 +56,18 @@ class DBConnection{
     this.connection.query(req, callback)
   }
 
+  deleteElement(table, args, callback){
+    let argslist = ''
+    for(let i=0; i <args?.length;i++){
+      argslist+=args[i].field+' = '+args[i].value
+      if(i+1<args.length)argslist+=' AND '
+    }
+    let req=`DELETE FROM ${table} WHERE ${argslist}`
+    req+=';'
+    console.log(req)
+    this.connection.query(req, callback)
+  }
+
   connection
 }
 

@@ -1,7 +1,7 @@
 <template>
-    <button class="sign_in" id="root" v-if="root">Add-Anime</button>
+    <button class="sign_in" id="add" v-if="root" @click="isVisible">Add-Anime</button>
     <strong>{{username}}</strong>
-    <button class="sign_in" id="sign-up" >Sign out</button>
+    <button class="sign_in" id="sign-up"  @click="signOut">Sign out</button>
 </template>
 
 <style>
@@ -30,7 +30,7 @@ strong{
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { SetOnNameChangeListener, username_ } from "./var";
+import { SetOnVarChangeListener, getVariable, setVariable, object } from "./storage";
 
 @Options({
     components: {
@@ -38,14 +38,21 @@ import { SetOnNameChangeListener, username_ } from "./var";
     },
 })
 
-export default class App extends Vue {
-    root = false
-    username = ''
-    beforeMount(){
-        SetOnNameChangeListener(this._onNameChange);
+export default class Accaunt extends Vue {
+    root = true
+    username = getVariable('username')
+    isVisible(){
+        setVariable('visible', !getVariable('visible'))
+        var content = document.getElementById('add')
+        if(getVariable('visible')){ content!.textContent = "Close"; }
+        if(!getVariable('visible')){ content!.textContent = "Add-Anime"; }
     }
-    _onNameChange = ()=>{
-        this.username = username_
+    beforeMount(){
+        SetOnVarChangeListener('username', this._onVarChange)
+    }
+    _onVarChange = ()=>{
+        console.log("name changed")
+        this.username = getVariable('username')
     }
     redirSign_in(){
         window.location.href = `http://${window.location.host}/auth?m=signin`;
@@ -58,6 +65,10 @@ export default class App extends Vue {
 
         xhr.open('POST', '/signout');
         xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.onloadend = ()=>{
+            window.location.href = `http://${window.location.host}/`;
+        }
+        xhr.send();
     }
 }
 </script>

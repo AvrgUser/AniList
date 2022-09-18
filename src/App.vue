@@ -12,7 +12,7 @@
     </div>
 
   </header>
-  <add-anime v-if="isRoot" class="add_anime"></add-anime>
+  <add-anime v-if="isVisible" class="add_anime"></add-anime>
 
   <main>
     <h1><strong>All anime</strong></h1>
@@ -21,12 +21,9 @@
       <aside class="filter">
         <strong>Filter</strong>
       </aside>
-
       <div class="fulanini" >
       </div>
-
     </div>
-
   </main>
 </template>
 
@@ -38,39 +35,39 @@ import Anime from "./content-element/Anime.vue"
 import AniInfo from "./content-element/AniInfo.vue"
 import AddAnime from "./content-element/AddAnime.vue"
 import Signin_Signup from "./Signin-Signup.vue"
-import { setname } from "./var"
+import { getVariable, SetOnVarChangeListener, setVariable } from "./storage"
 @Options({
   components: {
     Accaunt,
     Anime,
     AniInfo,
     AddAnime,
-    Signin_Signup,
-    setname
+    Signin_Signup
   },
 })
 
 export default class App extends Vue {
   isAuth = false
   isRoot = true
-  data(){
-    return{
-      title:'AniList'
-    }
+  isVisible = getVariable('visible')
+  title = 'AniList'
+  _onVarChange(){
+    this.isVisible = getVariable('visible')
+    console.log('visibility changed')
+    this.$forceUpdate()
   }
-  
-  
   redirMain(){
     window.location.href = `http://${window.location.host}/`;
   }
   beforeMount(){
+    SetOnVarChangeListener('visible', this._onVarChange)
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", '/getuserinfo')
     xhr.onloadend = ()=>{
       if(xhr.status==200){
         this.isAuth = !xhr.responseText.includes('user is not authorized')
-        setname(JSON.parse(xhr.responseText).name);
+        setVariable('username', JSON.parse(xhr.responseText).name);
       }
     }
     xhr.send()
