@@ -44,14 +44,14 @@ main h1{
 }
 .filter{
   background-color: #212028;
-  width: 200px;
+  width: 230px;
   height: 410px;
+  margin-right: 10px;
   margin-bottom: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  padding: 10px;
+  padding: 5px;
   float: left;
-  text-align: center;
 }
 .fulanini{
   min-width: max-content;
