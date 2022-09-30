@@ -11,7 +11,7 @@
         <input type="password" placeholder="Password" id="password">
         <button class="sign_b" v-on:click="signin_">Sign up</button>
         <a :href="signin" class="no_ak">Log in</a>
-        <strong id="info"></strong>
+        <span id="info"></span>
     </div>
 </main>
 </template>
@@ -53,17 +53,27 @@ export default class Reg extends Vue {
         });
         xhr.onloadend = ()=>{
             if(xhr.status == 200){
-                if(xhr.responseText.includes('nickname used')){
-                    info_.innerText = 'Это имя занято другим пользователем'
+                if(xhr.responseText.includes('user registrated')){
+                    this.redirMain()
                 }
-                else this.redirMain()
+                else {
+                    let res = xhr.response['warn'];
+                    switch(xhr.response['warn']){
+                        case 0: info_.innerText = 'Это имя занято другим пользователем'
+                        break
+                        case 1: info_.innerText = 'Некорректное имя'
+                        break
+                        default:
+                        info_.innerText = 'Непредвиденная ошибка сервера\nПопробуйте через некоторое время'
+                    }
+                }
             }
         }
 
         xhr.open("POST", '/reguser')
-        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8')
         console.log(json)
-        xhr.send(json);
+        xhr.send(json)
     }
 }
 </script>

@@ -87,17 +87,23 @@ app.post('/authuser', jsonParser, (req, res)=>{
   })
 })
 
+app.get('/getanimelist', jsonParser, (req, res)=>{
+    let filters = req.body.filters;
+    console.log(req.body)
+    getItems(filters, (result)=>{
+      res.end(JSON.stringify(result))
+    })
+})
+
 app.post("/signout", (req, res)=>{
   res.clearCookie('uid')
   console.log('user signed out')
-  req.end('signed out')
+  res.end('signed out')
 })
 
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`)
 })
-
-
 
 
 async function getUser(userParams, callback){
@@ -131,13 +137,44 @@ async function getUser(userParams, callback){
       if(res.length<=1) callback(res[0])
       else{
         console.log(`warning! probably two users share the same data on ${res[0].id}`)
+        callback(undefined)
       }
     }
   })
 }
 
-class UserParams{
-  name
-  password
-  id
+function getItems(tags, callback){
+  dbcon.getElement('anime', [],
+  ['*'],
+  (err, res)=>{
+    if(err){
+      console.log(err)
+      callback(undefined)
+    }
+    else{
+      console.log(tags)
+      if(tags!=undefined){
+        let needed = []
+        let relevance = []
+        for(let i =0, t=0;i<res.length;i++){
+          let found = false
+          console.log('aboba')
+          for(let j=0;j<tags.length;j++){
+            console.log(tags, res[i].genre)
+            let filters = ((String)(res[i].genre)).split('/')
+            if(filters.includes(tags[j])){
+              console.log('added')
+              if(needed[t]==undefined)needed[t] = res[i]
+              if(relevance[t]==undefined) relevance[t]=0
+              relevance[t]++
+              if(!found)t++
+              found = true
+            }
+          }
+        }
+        res = needed
+      }
+      callback(res)
+    }
+  })
 }
