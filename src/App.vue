@@ -18,11 +18,11 @@
     <h1><strong>All anime</strong></h1>
     <div style="margin-top: 15px;">
 
-      <aside class="filter">
-        <strong>Filter</strong>
-      </aside>
-      <div class="fulanini" >
+      <filters></filters>
+
+      <div class="fulanini">
       </div>
+      
     </div>
   </main>
 </template>
@@ -34,6 +34,7 @@ import Accaunt from "./Accaunt.vue"
 import Anime from "./content-element/Anime.vue"
 import AniInfo from "./content-element/AniInfo.vue"
 import AddAnime from "./content-element/AddAnime.vue"
+import Filters from "./searchfilters/Filters.vue"
 import Signin_Signup from "./Signin-Signup.vue"
 import { getVariable, SetOnVarChangeListener, setVariable } from "./storage"
 @Options({
@@ -42,7 +43,8 @@ import { getVariable, SetOnVarChangeListener, setVariable } from "./storage"
     Anime,
     AniInfo,
     AddAnime,
-    Signin_Signup
+    Signin_Signup,
+    Filters
   },
 })
 
