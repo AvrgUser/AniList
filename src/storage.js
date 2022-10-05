@@ -1,4 +1,4 @@
-export const object = {
+const object = {
 }
 
 let onVarChange = []
@@ -11,7 +11,8 @@ export function getVariable(variable){
 
 export function setVariable(variable, data) {
     object[variable] = data
-    if(onVarChange[variable]!= undefined){
+    if(onVarChange[variable]){
+        console.log(typeof onVarChange[variable], ', ', data)
         onVarChange[variable]()
     }
 }

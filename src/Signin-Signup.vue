@@ -36,7 +36,6 @@ import { Options, Vue } from "vue-class-component";
 export default class App extends Vue {
     data(){
         return{
-            username: 'Axmed'
         }
     }
   

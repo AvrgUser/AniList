@@ -30,7 +30,7 @@ strong{
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { SetOnVarChangeListener, getVariable, setVariable, object } from "./storage";
+import { SetOnVarChangeListener, getVariable, setVariable} from "./storage";
 
 @Options({
     components: {
@@ -51,7 +51,6 @@ export default class Accaunt extends Vue {
         SetOnVarChangeListener('username', this._onVarChange)
     }
     _onVarChange = ()=>{
-        console.log("name changed")
         this.username = getVariable('username')
     }
     redirSign_in(){

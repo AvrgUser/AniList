@@ -44,9 +44,10 @@ main h1{
 }
 .filter{
   background-color: #212028;
-  width: 200px;
-  height: 410px;
+  width: 230px;
+  height: auto;
   margin-bottom: 10px;
+  margin-right: 10px;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   padding: 10px;
@@ -54,10 +55,11 @@ main h1{
   text-align: center;
 }
 .fulanini{
-  min-width: max-content;
-  min-height: min-content;
-  display: table-row-group;
-  text-align: center;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
 }
 .add_anime{
   background-color: #19181d;
