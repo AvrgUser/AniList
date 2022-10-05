@@ -87,7 +87,7 @@ app.post('/authuser', jsonParser, (req, res)=>{
   })
 })
 
-app.get('/getanimelist', jsonParser, (req, res)=>{
+app.get('/getanimelist', jsonParser, (req, res)=>{ //req: https://[host]//getanimelist body: {"filters":["genre1", "genre2"]}
     let filters = req.body.filters;
     console.log(req.body)
     getItems(filters, (result)=>{
@@ -125,7 +125,7 @@ async function getUser(userParams, callback){
     accesable = true
   }
   console.log(fields)
-  if(!accesable) {
+  if(!accesable){
     console.log('failed to get user info on building request')
   }
   else
