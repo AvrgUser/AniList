@@ -256,8 +256,12 @@ export default class Nav extends Vue {
         'Viewed', 'Planned', 'Abandoned'
     ]
 
-
     mounted(): void {
+        SetOnVarChangeListener('isAuth', () => {
+            this.isAuth = getVariable('isAuth');
+            this.$forceUpdate()
+        })
+
         //Genre
         const $genre_content = document.getElementById('genre_content');
         const $genre_btn = document.getElementById('genre_btn')?.querySelectorAll('button');
@@ -278,10 +282,9 @@ export default class Nav extends Vue {
                     //TODO: удаление из массива
                     arr_genre.push(this._genres[id]);
                     e.style.background = '#666';
-                    console.log(arr_genre);
                 } else{
                     arr_genre.splice(index, 1)
-                        e.style.background = '#15141a';
+                    e.style.background = '#15141a';
                 }
                 $genre_content!.innerHTML = ''
                 
@@ -531,7 +534,6 @@ export default class Nav extends Vue {
             this.isCategory = true
         }
     }
-    
     filters(){
         var xhr = new XMLHttpRequest();
 

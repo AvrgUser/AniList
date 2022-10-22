@@ -5,28 +5,22 @@
       <img src="./icon.png" alt="" width="120px">
       <h1>AniList</h1>
     </div>
-    
     <div class="auth_d">
       <Accaunt v-if="isAuth"></Accaunt>
       <Signin_Signup v-if="!isAuth"></Signin_Signup>
     </div>
-    <button @click="i()">123123</button>
   </header>
   <add-anime v-if="isVisible" class="add_anime"></add-anime>
 
   <main>
     <h1><strong>All anime</strong></h1>
-    <div style="margin-top: 15px; 
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;">
+    <div class="main_">
+      <AniInfo v-if="viewLike" :id="animeLikeID" class="aniinfo"></AniInfo>
       <filters></filters>
       <div class="fulanini" id="allanime">
           <anime v-for="index in countAni" :key="index" :id="'anime_' + index"></anime>
-          <AniInfo v-if="viewLike"></AniInfo>
-      </div>
+          
+    </div>
       
     </div>
   </main>
@@ -59,23 +53,17 @@ export default class App extends Vue {
   isRoot = true
   viewLike = getVariable('viewLike')
   isVisible = getVariable('visible')
-
+  animeLikeID = getVariable('animeLikeID')
   countAni = 3; //сюда приходит кол-во аниме
   animeID = [] //id блоков с аниме
-  
-  i(){
-    console.log(this.animeID)
-  }
+
   mounted(){
     const $id = document.getElementById('allanime')?.querySelectorAll('div')
     $id?.forEach((e) => {
       this.animeID.push((e.id as never))
-      
-    
+
     })
-    console.log('sssssss')
     setVariable('anime_id', this.animeID)
-    
   }
   _onVarChange(){
     this.isVisible = getVariable('visible')
@@ -89,9 +77,12 @@ export default class App extends Vue {
     SetOnVarChangeListener('visible', this._onVarChange)
     SetOnVarChangeListener('viewLike' ,() => {
       this.viewLike = getVariable('viewLike')
-      console.log('LOLOLOLOLOLO')
+      this.$forceUpdate()
     })
-
+    SetOnVarChangeListener('animeLikeID' ,() => {
+      this.animeLikeID = getVariable('animeLikeID')
+      this.$forceUpdate()
+    })
     let xhr = new XMLHttpRequest();
 
     xhr.open("GET", '/getuserinfo')
@@ -99,10 +90,15 @@ export default class App extends Vue {
       if(xhr.status==200){
         this.isAuth = !xhr.responseText.includes('user is not authorized')
         setVariable('username', JSON.parse(xhr.responseText).name);
+        setVariable('isAuth', true)
+        SetOnVarChangeListener('isAuth', this.isAuth = getVariable('isAuth'))
       }
     }
     xhr.send()
-    SetOnVarChangeListener('visible', this.isVisible = getVariable('visible'))
+    SetOnVarChangeListener('visible', () => {
+      this.isVisible = getVariable('visible')
+      this.$forceUpdate()
+    })
   }
 }
 </script>

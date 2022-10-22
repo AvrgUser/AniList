@@ -15,9 +15,7 @@ import { Options, Vue } from "vue-class-component";
   },
 })
 export default class Anime extends Vue {
-  isLike = false;
   animeID = getVariable('anime_id')
-  likeAni = []
   data(){
     return{
       Name: 'непризнанный школой владыка демонов'
@@ -26,31 +24,36 @@ export default class Anime extends Vue {
 
   beforeMount(){
     this.animeID = getVariable('anime_id')
+
     SetOnVarChangeListener('anime_id', () =>{
       this.animeID = getVariable('anime_id')
-      if(!this.animeID) {
-        
-        console.log('animeID is null')
-        return
-      }
-      else console.log('isnt null')
+      this.$forceUpdate()
+      if(!this.animeID) {return}
+      
       this.animeID.forEach((e: string) => {
         let like = document.getElementById(e)?.querySelector('.like');
+
         (like as HTMLElement).onclick = () => {
-          console.log('aaa')
-          if(this.isLike == false){
-          this.isLike = true;
-          (like as HTMLImageElement).src = 'https://cdn-icons-png.flaticon.com/512/2589/2589175.png';
-          (like as HTMLElement).style.filter = 'none'
-          this.likeAni.push((e as never));
-          setVariable('viewLike', true)
-          setVariable('likeAni', this.likeAni)
-          console.log('ggggg')
+          if(!getVariable('isAuth')){alert('You are not logged in'); return}
+          if(like!.className.indexOf('liked') == -1){
+            (like as HTMLImageElement).src = 'https://cdn-icons-png.flaticon.com/512/2589/2589175.png';
+            (like as HTMLElement).style.filter = 'none';
+            like!.classList.add('liked');
+            setVariable('viewLike', true);
+            setVariable('animeLikeID', (e as never));
           }
           else{
-            this.isLike = false;
+            like!.classList.remove('liked');
             (like as HTMLImageElement).src = 'https://cdn-icons-png.flaticon.com/512/2589/2589197.png';
             (like as HTMLElement).style.filter = 'brightness(9) invert(3)'
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('POST', '/deliked');
+            xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+            let json = JSON.stringify({
+                liked: e
+            });
+            xhr.send(json);
           }
         }
       })
@@ -87,4 +90,5 @@ export default class Anime extends Vue {
   left: 5px;
   filter: brightness(9) invert(3)
 }
+
 </style>

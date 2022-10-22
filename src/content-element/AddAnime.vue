@@ -313,7 +313,6 @@ export default class Anime extends Vue {
                     //TODO: удаление из массива
                     arr_genre.push(this._genres[id]);
                     e.style.background = '#666';
-                    console.log(arr_genre);
                 } else{
                     arr_genre.splice(index, 1)
                         e.style.background = '#15141a';
