@@ -1,6 +1,6 @@
 <template>
   <div class="content-element">
-    <img class="ani_preview" src="https://proprikol.ru/wp-content/uploads/2020/05/kartinki-glaza-anime-7.jpg" alt="">
+    <img class="ani_preview" src="http://www.benkamprath.com/wp-content/uploads/2015/07/IMG_PushFurther_10.jpg" alt="">
     <p class="name_ani">{{Name}}</p>
     <img src="https://cdn-icons-png.flaticon.com/512/2589/2589197.png" class="like">
   </div>
@@ -48,7 +48,7 @@ export default class Anime extends Vue {
             (like as HTMLElement).style.filter = 'brightness(9) invert(3)'
             var xhr = new XMLHttpRequest();
 
-            xhr.open('POST', '/deliked');
+            xhr.open('POST', '/unliked');
             xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
             let json = JSON.stringify({
                 liked: e

@@ -205,14 +205,18 @@ nav button:hover{
             <button class="button_filter">Announcement</button>
         </nav>
 
-        <div v-if="isAuth" id="сategory" @click="сategory()" class="div_f">
-            <p id="сategory_content" class="content_filter">Category</p>
+
+        <div  v-if="isAuth">
+            <div id="сategory" @click="сategory()" class="div_f">
+                <p id="сategory_content" class="content_filter" >Category</p>
+            </div>
+            <nav id="сategory_btn" class="btn_filter" >
+                <button class="button_filter">Viewed</button>
+                <button class="button_filter">Planned</button>
+                <button class="button_filter">Abandoned</button>
+            </nav>
         </div>
-        <nav id="сategory_btn" class="btn_filter">
-            <button class="button_filter">Viewed</button>
-            <button class="button_filter">Planned</button>
-            <button class="button_filter">Abandoned</button>
-        </nav>
+        
 
         <button class="search" @click="filters()">Search</button>
     </div>  

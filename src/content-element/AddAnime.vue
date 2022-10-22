@@ -365,7 +365,7 @@ export default class Anime extends Vue {
 
         const _text_reg = document.getElementById('text_reg');
 
-        if(_file!.innerText == ""){ _text_reg!.textContent = "add an image!";  return; }
+        if((_file! as HTMLInputElement).value == ""){ _text_reg!.textContent = "add an image!";  return; }
         if(_name!.innerText == ""){ _text_reg!.textContent = "enter a name";  return; }
         if(_genre!.innerText == ""){ _text_reg!.textContent = "enter a genre";  return; }
         if(_year!.innerText == ""){ _text_reg!.textContent = "choose the year of release";  return; }
