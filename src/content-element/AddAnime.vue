@@ -77,11 +77,6 @@
         <option>China</option>
       </select>
 
-      <select id="category" class="select_add">
-        <option value="1">Viewed</option>
-        <option value="2">Planned</option>
-        <option value="3">Abandoned</option>
-      </select>
       <input v-if="Number(a_value) == 3" type="number" id="series" placeholder="Last series" class="i">
       <input type="number" id="series" placeholder="Series" class="i">
       <input type="number" id="seasons" placeholder="Seasons" class="i">
@@ -285,13 +280,6 @@ export default class Anime extends Vue {
         'Horrors', 'Fantasy', 'Etty', 'School'
     ];
     mounted(): void {
-      const Abandoned = document.getElementById('category')
-      let value = (Abandoned as HTMLSelectElement).value;
-      if(Number(value) == 3){ 
-        this.a_value = true
-      }else {
-        this.a_value = false
-      }
 
       //Genre
       const $genre_content = document.getElementById('genre_content');
