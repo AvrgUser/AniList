@@ -143,8 +143,8 @@ async function getUser(userParams, callback){
   })
 }
 
-function getItems(tags, callback){
-  dbcon.getElement('anime', [],
+function getItems(tags, age, rating, likes, callback){
+  dbcon.getElement('anime', [``],
   ['*'],
   (err, res)=>{
     if(err){

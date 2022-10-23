@@ -54,7 +54,7 @@ export default class App extends Vue {
   viewLike = getVariable('viewLike')
   isVisible = getVariable('visible')
   animeLikeID = getVariable('animeLikeID')
-  countAni = 3; //сюда приходит кол-во аниме
+  countAni = getVariable('countAni'); //сюда приходит кол-во аниме
   animeID = [] //id блоков с аниме
 
   mounted(){
@@ -95,6 +95,19 @@ export default class App extends Vue {
       }
     }
     xhr.send()
+
+    let xhr_ = new XMLHttpRequest();
+    xhr_.open('GET', '/getanimelist');
+    xhr_.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+    let json = JSON.stringify({
+      filters: []
+    });
+    xhr_.onloadend = ()=>{
+        let request = JSON.parse(xhr_.responseText).lenght
+        this.countAni = request;
+    };
+    xhr_.send(json);
+    
     SetOnVarChangeListener('visible', () => {
       this.isVisible = getVariable('visible')
       this.$forceUpdate()
