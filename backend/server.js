@@ -8,7 +8,7 @@ const { getSourceMapRange } = require('typescript')
 const app = express();
 const jsonParser = express.json();
 
-let dbcon = new sqldb.DBConnection('164.132.6.35', '3306', 'u67_Q5fQrUb01b', 's67_anilist', '9A+J=o^u8b=lhvi1Z7NuIa2J');
+let dbcon = new sqldb.DBConnection('194.190.152.244', '3306', 'u127_VOLDIZV7dD', 's127_anilist', '4=3M0drO0Hl.5Z4^GbzR.trh');
 
 let servingDir = path.parse(__dirname).dir+'\\dist';
 let port = process.env.PORT || 3009;
@@ -90,9 +90,18 @@ app.post('/authuser', jsonParser, (req, res)=>{
 app.get('/getanimelist', jsonParser, (req, res)=>{ //req: https://[host]//getanimelist body: {"filters":["genre1", "genre2"]}
     let filters = req.body.filters;
     console.log(req.body)
-    getItems(filters, (result)=>{
+    /*getItems(filters, (result)=>{
       res.end(JSON.stringify(result))
-    })
+    })*/
+    dbcon.getElement('anime', [``],
+  ['*'],
+  (err, responce)=>{
+    let ans = []
+    for(let i = 0; i<responce.length;i++){
+      ans[i] = responce[i]
+    }
+    res.end(ans)
+  })
 })
 
 app.post("/signout", (req, res)=>{
@@ -102,7 +111,7 @@ app.post("/signout", (req, res)=>{
 })
 
 app.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`)
+  console.log(`Server running at http://localhost:${port}/ (Bot is online)`)
 })
 
 
